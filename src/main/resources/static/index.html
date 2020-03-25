@@ -1,0 +1,52 @@
+<head>
+    <title>nombre</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	
+    
+    <script src="js/airportsFinderApp.js"></script>
+	 <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
+	<script src="js/airportsFinderApp.js"></script>
+    <script src="js/airportsFinderClient.js"></script>
+ 
+</head>
+
+<body onload="airportFinderApp.initMap()">
+	<header>
+		<h2>nombre</h2>
+	
+		
+	</header>
+	
+	<form id = "getAeropuertos" action="javascript:airportFinderApp.getAirpotsbyName()"> 
+      <input class="inputtype" id="ciudad" type="text" placeholder="Ciudad"/>
+      <button class="otherbutton" id="agregartiquetes">Buscar</button>
+    </form>
+	
+	
+	<div class="wrapper">
+  
+  
+	  <table id="keywords" cellspacing="0" cellpadding="0">
+		<thead>
+		  <tr>
+			<th><span>Codigo aeropuerto</span></th>
+			<th><span>Nombre</span></th>
+			<th><span>Ciudad</span></th>
+			<th><span>Pais</span></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  
+		</tbody>
+	  </table>
+	  
+	  
+	  <div id="map" style="width: 450px; height: 350px;"> </div>
+  
+	</div> 
+</body>
