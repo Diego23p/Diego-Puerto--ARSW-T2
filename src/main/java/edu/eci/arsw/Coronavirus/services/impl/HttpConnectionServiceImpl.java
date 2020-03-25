@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class HttpConnectionServiceImpl implements HttpConnectionService {
 
 	@Override
-	public String getAll() throws IOException {
+	public String getAllCases() throws IOException {
 		String USER_AGENT = "Mozilla/5.0";
         String GET_URL = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats";
         URL obj = new URL(GET_URL);
@@ -82,7 +82,7 @@ public class HttpConnectionServiceImpl implements HttpConnectionService {
 	}
 
 	@Override
-	public String getProvincias(String pais) throws IOException{
+	public String getCasesByCountry(String pais) throws IOException{
 		String USER_AGENT = "Mozilla/5.0";
         String GET_URL = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country="+pais;
         URL obj = new URL(GET_URL);

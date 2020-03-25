@@ -23,14 +23,14 @@ public class CoronavirusServicesImpl implements CoronavirusServices {
 	 CoronavirusCache cc;
 	    
 	 @Override
-	 public String getAll() throws IOException{
+	 public String getAllCases() throws IOException{
 		 if(!cc.isSave()){
-			 cc.save(hcs.getAll());
+			 cc.save(hcs.getAllCases());
 			 
 		 }
 		 else {
 			 if(!cc.isAlive()){
-				 cc.save(hcs.getAll());
+				 cc.save(hcs.getAllCases());
 			 }
 		 }
 		 return cc.load();
@@ -42,8 +42,8 @@ public class CoronavirusServicesImpl implements CoronavirusServices {
 	}
 
 	@Override
-	public String getProvincias(String pais) throws IOException{
-		return hcs.getProvincias(pais);
+	public String getCasesByCountry(String pais) throws IOException{
+		return hcs.getCasesByCountry(pais);
 	}
 
 }

@@ -66,6 +66,7 @@ var CoronavirusApp =( function (){
 	var pintar = function(pais){
 		CoronavirusClient.pintar(maperPonts,pais);
 		CoronavirusClient.ciu(adTabla,pais);
+		document.getElementById("paisSelec").innerHTML = pais;
     };
 	
 	var adTabla = function(city){
@@ -73,7 +74,7 @@ var CoronavirusApp =( function (){
 		city=JSON.parse(city);
 		city = city.data.covid19Stats;
 		city.map(function(cities){
-			var contenedor = $("<tr><td class=\"lalign\">"+cities.province+"</td><td>"+cities.deaths+"</td><td>"+cities.confirmed+"</td><td>"+cities.recovered+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
+			var contenedor = $("<tr><td class=\"lalign\">"+cities.province+"</td><td>"+cities.deaths+"</td><td>"+cities.confirmed+"</td><td>"+cities.recovered+"</td></tr>");
 			$("#keywords2 tbody").append(contenedor);
 		})
 	}
