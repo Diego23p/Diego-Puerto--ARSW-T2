@@ -41,4 +41,9 @@ public class CoronavirusServicesImpl implements CoronavirusServices {
 		return hcs.getPais(pais);
 	}
 
+	@Override
+	public String getProvincias(String pais) throws IOException{
+		return hcs.getProvincias(pais);
+	}
+
 }

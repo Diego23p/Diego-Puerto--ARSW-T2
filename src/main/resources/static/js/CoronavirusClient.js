@@ -23,6 +23,18 @@ CoronavirusClient= (function(){
                 } ,
                 async: true
             });
+        },
+		ciu: function(callback,pais){
+            jQuery.ajax({
+                url: "Coronavirus/byPais/"+pais,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error en la consulta");
+                } ,
+                async: true
+            });
         }
     };
 })();

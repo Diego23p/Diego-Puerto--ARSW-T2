@@ -8,4 +8,6 @@ public interface HttpConnectionService {
 	
 	 public String getPais(String pais) throws IOException;
 
+	public String getProvincias(String pais) throws IOException;
+
 }

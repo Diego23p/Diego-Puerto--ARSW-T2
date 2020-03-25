@@ -52,10 +52,6 @@ var CoronavirusApp =( function (){
 			}
 			return {country:result.country, deaths:result.deaths, confirmed:result.confirmed, recovered:result.recovered}
 		})
-		//alert(pais);
-		//alert(muertes.get("China"));
-		//alert(confirmado.get("China"));
-		//alert(sano.get("China"));
 		pais.map(function(result){
 			var contenedor = $("<tr><td class=\"lalign\">"+result+"</td><td>"+muertes.get(result)+"</td><td>"+confirmado.get(result)+"</td><td>"+sano.get(result)+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
 			contenedor.click(function(){
@@ -69,7 +65,18 @@ var CoronavirusApp =( function (){
 	
 	var pintar = function(pais){
 		CoronavirusClient.pintar(maperPonts,pais);
+		CoronavirusClient.ciu(adTabla,pais);
     };
+	
+	var adTabla = function(city){
+		$("#keywords2 tbody tr").remove();
+		city=JSON.parse(city);
+		city = city.data.covid19Stats;
+		city.map(function(cities){
+			var contenedor = $("<tr><td class=\"lalign\">"+cities.province+"</td><td>"+cities.deaths+"</td><td>"+cities.confirmed+"</td><td>"+cities.recovered+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
+			$("#keywords2 tbody").append(contenedor);
+		})
+	}
 	
 	var maperPonts = function(city){
 		//elimina puntos

@@ -41,4 +41,16 @@ public class CoronavirusController {
             return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
         }
     }
+    
+    @RequestMapping(path = "/byPais/{pais}", method = RequestMethod.GET)
+    public ResponseEntity<?> getProvincias(@PathVariable(name = "pais") String pais) {
+        try {
+           
+            return new ResponseEntity<>(cvs.getProvincias(pais),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
+        }
+    }
+    
 }
