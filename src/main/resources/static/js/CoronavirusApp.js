@@ -1,6 +1,7 @@
 var CoronavirusApp =( function (){
 	
 	var covid19Stats;
+	var lista = [];
 	
     document.addEventListener('DOMContentLoaded', function () {
         if (document.querySelectorAll('#map').length > 0) {
@@ -25,13 +26,15 @@ var CoronavirusApp =( function (){
     var getCountries = function(countries){
 		//elimina puntos
         $("#keywords tbody tr").remove();
-		alert(countries);
+		//alert(countries);
 
 		countries=JSON.parse(countries);
 		countries = countries.data.covid19Stats;
 		
-        countries.map(function(result){
-			var contenedor = $("<tr><td class=\"lalign\">"+result.country+"</td><td>"+result.deaths+"</td><td>"+result.confirmed+"</td><td>"+result.cured+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
+        var lista = countries.map(function(result){
+			return {country:result.country, deaths:result.deaths, confirmed:result.confirmed, recovered:result.recovered}
+		})
+			var contenedor = $("<tr><td class=\"lalign\">"+result.country+"</td><td>"+result.deaths+"</td><td>"+result.confirmed+"</td><td>"+result.recovered+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
 			contenedor.click(function(){
 				pintar(result.country);
 			});
