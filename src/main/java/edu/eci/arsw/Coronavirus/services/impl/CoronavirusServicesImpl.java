@@ -24,7 +24,16 @@ public class CoronavirusServicesImpl implements CoronavirusServices {
 	    
 	 @Override
 	 public String getAll() throws IOException{
-		 return hcs.getAll();
+		 if(!cc.isSave()){
+			 cc.save(hcs.getAll());
+			 
+		 }
+		 else {
+			 if(!cc.isAlive()){
+				 cc.save(hcs.getAll());
+			 }
+		 }
+		 return cc.load();
 	 }
 
 }
