@@ -25,6 +25,7 @@ var CoronavirusApp =( function (){
     var getCountries = function(countries){
 		//elimina puntos
         $("#keywords tbody tr").remove();
+		alert(countries);
 
 		countries=JSON.parse(countries);
 		countries = countries.data.covid19Stats;

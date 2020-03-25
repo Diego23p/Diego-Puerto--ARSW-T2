@@ -62,14 +62,35 @@ Sugerencia realice la implementación de manera incremental. Haga commits regula
 
 2.  Los fuentes deben estar documentados y bien estructurados para generar el Javadoc.
 3.  El README.md debe describir:
-	1. El diseño de arquitectura. 
+	1. El diseño de arquitectura.
+
+	### Diagrama de Despliegue
+
+	![](ArchitectureDiagrams/DeploymentDiagram2.png)
+
+	### Diagrama de Componentes
+
+	![](ArchitectureDiagrams/ComponentDiagram2.png)
+
 	2. La forma de ejecutar el programa localmente.
 
 	mvn spring-boot:run
 
 	3. Explicar cómo se puede extender y cómo podría, por ejemplo, hacer que una función específica la implementara un proveedor de servicios diferente.
+
+	Se podría extender gracias a que se usan anotaciones @service, @Autowired y @Qualifier las cuales permiten cambiar la implementación de los métodos con solo modigicar el valor de @Service, si estas implementan la misma interface
+
 	4. Indique la urls de Heroku
+
+	Heroku: https://diego-puerto--arswt2.herokuapp.com/
+
     5. Indique si hizo los bonos y una evidencia de su ejecución.
+
+	Se realizó el bono del caché para la API del Coronavirus. donde se rerefrezca la página pero este no hace más peticione directamentye a la API que provee:
+
+	![](ArchitectureDiagrams/cache.jpg)
+
+
 4.  Suba el zip del proyecto al aula con el nombre (NOMBRE-APELLIDO-ARSW-T2).
 5.  Guarde una copia de su proyecto.
 
