@@ -31,4 +31,14 @@ public class CoronavirusController {
         }
     }
     
+    @RequestMapping(path = "/{pais}", method = RequestMethod.GET)
+    public ResponseEntity<?> getPais(@PathVariable(name = "pais") String pais) {
+        try {
+           
+            return new ResponseEntity<>(cvs.getPais(pais),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
+        }
+    }
 }

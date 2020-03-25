@@ -25,22 +25,55 @@ var CoronavirusApp =( function (){
     var getCountries = function(countries){
 		//elimina puntos
         $("#keywords tbody tr").remove();
-        for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(null);
-        }
 
 		countries=JSON.parse(countries);
 		countries = countries.data.covid19Stats;
-		markers = [];
-        bounds = new google.maps.LatLngBounds();
 		
         countries.map(function(result){
-			var contenedor = "<tr><td class=\"lalign\">"+result.country+"</td><td>"+result.deaths+"</td><td>"+result.confirmed+"</td><td>"+result.recovered+"</td></tr>";
+			var contenedor = $("<tr><td class=\"lalign\">"+result.country+"</td><td>"+result.deaths+"</td><td>"+result.confirmed+"</td><td>"+result.cured+"</td><td><button class='btn btn-primary'>Ver</button></td></tr>");
+			contenedor.click(function(){
+				pintar(result.country);
+			});
 			$("#keywords tbody").append(contenedor);
 		})
 		
 		
     }
+	
+	var pintar = function(pais){
+		CoronavirusClient.pintar(maperPonts,pais);
+    };
+	
+	var maperPonts = function(city){
+		//elimina puntos
+        for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(null);
+        }
+
+		//
+        city=JSON.parse(city);
+        markers = [];
+        bounds = new google.maps.LatLngBounds();
+ 
+		//recorrer cada elemento
+        city.map(function(city2){
+            var latitud = city2.latlng[0];
+			var longitud = city2.latlng[1];   
+			markers.push(
+				new google.maps.Marker({
+					position: {lat: latitud, lng: longitud},
+					map: map,
+					animation: google.maps.Animation.DROP
+				})
+			);
+ 
+            bounds.extend({lat: latitud, lng: longitud});
+
+		})
+        map.fitBounds(bounds);
+    }
+
+
 	
     function initMap(){
 		map = new google.maps.Map(document.getElementById('map'), {
@@ -59,6 +92,7 @@ var CoronavirusApp =( function (){
 	return {
 		getAllCountries: getAllCountries,
         initMap: initMap,
-		getCountries: getCountries
+		getCountries: getCountries,
+		pintar: pintar
 	};
 })();

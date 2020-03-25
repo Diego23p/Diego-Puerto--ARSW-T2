@@ -4,4 +4,6 @@ import java.io.IOException;
 
 public interface CoronavirusServices {
     public String getAll() throws IOException;
+     public String getPais(String pais) throws IOException;
+     
 }

@@ -36,4 +36,9 @@ public class CoronavirusServicesImpl implements CoronavirusServices {
 		 return cc.load();
 	 }
 
+	@Override
+	public String getPais(String pais) throws IOException {
+		return hcs.getPais(pais);
+	}
+
 }

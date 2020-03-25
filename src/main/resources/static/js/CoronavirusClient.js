@@ -7,7 +7,19 @@ CoronavirusClient= (function(){
                   callback(result);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                     alert("Error en la solicitud");
+                     alert("Error en la consulta");
+                } ,
+                async: true
+            });
+        },
+		pintar: function(callback,pais){
+            jQuery.ajax({
+                url: "Coronavirus/"+pais,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error en la consulta");
                 } ,
                 async: true
             });
