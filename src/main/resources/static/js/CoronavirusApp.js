@@ -1,4 +1,6 @@
-var nombreApp =( function (){
+var CoronavirusApp =( function (){
+	
+	var covid19Stats;
 	
     document.addEventListener('DOMContentLoaded', function () {
         if (document.querySelectorAll('#map').length > 0) {
@@ -16,43 +18,28 @@ var nombreApp =( function (){
         
 	var map;
 	
-    var  getAirpotsbyName= function(){
-		var city = $('#ciudad').val();
-        airpotsFinderClient.getAirpotsByName(maperPonts,city);
+    var  getAllCountries= function(){
+        CoronavirusClient.getAllCountries(getCountries);
     }
       
-    var maperPonts = function(airpots){
+    var getCountries = function(countries){
 		//elimina puntos
         $("#keywords tbody tr").remove();
         for (var i = 0; i < markers.length; i++) {
 			markers[i].setMap(null);
         }
 
-		//
-        airpots=JSON.parse(airpots);
-        markers = [];
+		countries=JSON.parse(countries);
+		countries = countries.data.covid19Stats;
+		markers = [];
         bounds = new google.maps.LatLngBounds();
- 
-		//recorrer cada elemento
-        airpots.map(function(airport){
-			var contenedor = "<tr><td class=\"lalign\">"+airport.code+"</td><td>"+airport.name+"</td><td>"+airport.city+"</td><td>"+airport.countryCode+"</td></tr>";
-            var location = airport.location;
-                  
-            markers.push(
-                new google.maps.Marker({
-                    position: {lat: location.latitude, lng: location.longitude},
-                    map: map,
-                    animation: google.maps.Animation.DROP
-                })
-            );
- 
-            bounds.extend({lat: location.latitude, lng: location.longitude});
- 
-			//agregar a tabla
-            $("#keywords tbody").append(contenedor);
-
+		
+        countries.map(function(result){
+			var contenedor = "<tr><td class=\"lalign\">"+result.country+"</td><td>"+result.deaths+"</td><td>"+result.confirmed+"</td><td>"+result.recovered+"</td></tr>";
+			$("#keywords tbody").append(contenedor);
 		})
-        map.fitBounds(bounds);
+		
+		
     }
 	
     function initMap(){
@@ -63,15 +50,15 @@ var nombreApp =( function (){
 
         fetch('https://raw.githubusercontent.com/jayshields/google-maps-api-template/master/markers.json')
         .then(function(response){return response.json()})
-        .then(plotMarkers);
+        .then(getAllCountries);
     }
 
 	var bounds;
     var markers = [];
 	
 	return {
-		maperPonts: maperPonts,
-		getAirpotsbyName: getAirpotsbyName,
-        initMap: initMap
+		getAllCountries: getAllCountries,
+        initMap: initMap,
+		getCountries: getCountries
 	};
 })();

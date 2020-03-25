@@ -1,9 +1,9 @@
-package edu.eci.arsw.nombre.services.impl;
+package edu.eci.arsw.Coronavirus.services.impl;
 
 import java.io.IOException;
 
-import edu.eci.arsw.nombre.services.HttpConnectionService;
-import edu.eci.arsw.nombre.services.HttpConnectionService;
+import edu.eci.arsw.Coronavirus.services.HttpConnectionService;
+import edu.eci.arsw.Coronavirus.services.HttpConnectionService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 public class HttpConnectionServiceImpl implements HttpConnectionService {
 
 	@Override
-	public String airpotsByName(String name) throws IOException {
+	public String getAll() throws IOException {
 		String USER_AGENT = "Mozilla/5.0";
-        String GET_URL = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country="+name;
+        String GET_URL = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats";
         URL obj = new URL(GET_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");

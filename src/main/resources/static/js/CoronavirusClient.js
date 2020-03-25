@@ -1,13 +1,13 @@
-nombreClient= (function(){
+CoronavirusClient= (function(){
     return {
-		getAirpotsByName: function(callback,city){
+		getAllCountries: function(callback){
             jQuery.ajax({
-                url: "airpotsfinder/" + city ,
+                url: "Coronavirus/",
                 success: function(result) {
                   callback(result);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                     alert("No se encontró el nombre solicitado");
+                     alert("Error en la solicitud");
                 } ,
                 async: true
             });

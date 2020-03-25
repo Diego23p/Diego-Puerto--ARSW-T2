@@ -1,5 +1,5 @@
 <head>
-    <title>nombre</title>
+    <title>Coronavirus</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,24 +8,24 @@
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 	
     
-    <script src="js/airportsFinderApp.js"></script>
 	 <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
-	<script src="js/airportsFinderApp.js"></script>
-    <script src="js/airportsFinderClient.js"></script>
+	<script src="js/CoronavirusApp.js"></script>
+    <script src="js/CoronavirusClient.js"></script>
  
 </head>
 
-<body onload="airportFinderApp.initMap()">
+<body onload="CoronavirusApp.initMap();CoronavirusApp.getAllCountries()">
 	<header>
-		<h2>nombre</h2>
+		<h2>Coronavirus</h2>
 	
 		
 	</header>
 	
-	<form id = "getAeropuertos" action="javascript:airportFinderApp.getAirpotsbyName()"> 
+	<!--
+	<form id = "getAeropuertos" action="javascript:CoronavirusApp.getAirpotsbyName()"> 
       <input class="inputtype" id="ciudad" type="text" placeholder="Ciudad"/>
       <button class="otherbutton" id="agregartiquetes">Buscar</button>
-    </form>
+    </form>-->
 	
 	
 	<div class="wrapper">
@@ -34,10 +34,10 @@
 	  <table id="keywords" cellspacing="0" cellpadding="0">
 		<thead>
 		  <tr>
-			<th><span>Codigo aeropuerto</span></th>
-			<th><span>Nombre</span></th>
-			<th><span>Ciudad</span></th>
-			<th><span>Pais</span></th>
+			<th><span>País</span></th>
+			<th><span>Número de Muertes</span></th>
+			<th><span>Número de Infectados</span></th>
+			<th><span>Número de Curados</span></th>
 		  </tr>
 		</thead>
 		<tbody>
